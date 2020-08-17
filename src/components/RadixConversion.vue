@@ -1,19 +1,19 @@
 <template>
   <div id="radixConversion">
-    <input v-model.number="radix.decimal" type="text" />
+    <input v-model.number="decimal" type="text">
     <div class="radix-output">
       <ul>
         <li>
-          2進数<span>{{ radix.decimal.toString(2) }}</span>
+          2進数<span>{{ decimal.toString(2) }}</span>
         </li>
         <li>
-          8進数<span>{{ radix.decimal.toString(8) }}</span>
+          8進数<span>{{ decimal.toString(8) }}</span>
         </li>
         <li>
-          10進数<span>{{ radix.decimal }}</span>
+          10進数<span>{{ decimal }}</span>
         </li>
         <li>
-          16進数<span>{{ radix.decimal.toString(16) }}</span>
+          16進数<span>{{ decimal.toString(16) }}</span>
         </li>
       </ul>
     </div>
@@ -24,9 +24,7 @@
 export default {
   data: function() {
     return {
-      radix: {
         decimal: 0,
-      },
     };
   },
 };
