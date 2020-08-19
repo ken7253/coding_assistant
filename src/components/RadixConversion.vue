@@ -1,5 +1,6 @@
 <template>
   <div id="radixConversion">
+    <h2>基数変換</h2>
     <input v-model.number="decimal" type="text">
     <div class="radix-output">
       <ul>
