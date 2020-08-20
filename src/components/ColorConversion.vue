@@ -3,7 +3,13 @@
     <h2>カラーコード変換</h2>
     <input v-model="colorCode" type="text" />
     <input @click="moldNum" type="button" value="変換">
-    <p>{{ rgbColor }}</p>
+    <ul>
+      <li>red:{{ rgbColor[0] }}</li>
+      <li>green:{{ rgbColor[1] }}</li>
+      <li>blue:{{ rgbColor[2] }}</li>
+    </ul>
+    <p>for CSS</p>
+    <code>rgb({{ rgbColor[0] }},{{ rgbColor[1] }},{{ rgbColor[2] }})</code>
   </div>
 </template>
 
