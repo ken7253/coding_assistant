@@ -21,6 +21,5 @@ export default {
 }
 </script>
 
-<style>
-body {font-family: source-han-sans-japanese, sans-serif;margin: 0;}
+<style lang="scss">
 </style>
