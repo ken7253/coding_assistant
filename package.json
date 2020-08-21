@@ -41,5 +41,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ken7253/coding_assistant"
+  }
 }
