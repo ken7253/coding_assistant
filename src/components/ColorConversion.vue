@@ -9,7 +9,7 @@
       <li>blue:{{ rgbColor[2] }}</li>
     </ul>
     <p>for CSS</p>
-    <p>{{ checkNumFormat("#fff") }}</p>
+    <p>{{ removeHashMark("#fff") }}</p>
     <code>rgb({{ rgbColor[0] }},{{ rgbColor[1] }},{{ rgbColor[2] }})</code>
   </div>
 </template>
@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     moldNum: function() {
-      const checkedNum = this.checkNumLength(this.colorCode);
+      const removedHash = this.removeHashMark(this.colorCode);
+      const checkedNum = this.checkNumLength(removedHash);
       const splitArr = checkedNum.match(/.{2}/g);
       const outputArr = [];
       splitArr.forEach((element) => {
@@ -32,17 +33,27 @@ export default {
       });
       this.rgbColor = outputArr;
     },
+    removeHashMark: function(num) {
+      const pattern = /^#/i;
+      if (num.match(pattern)) {
+        const arr = num.split('');
+        arr.shift();
+        return arr.join('');
+      } else {
+        return num;
+      }
+    },
     checkNumLength: function(num) {
       const numLength = num.length;
       if (numLength == 6) {
         return num;
       } else if (numLength == 3) {
-        const arr = num.split("");
+        const arr = num.split('');
         const outputArr = [];
         arr.forEach((element) => {
           outputArr.push(element + element);
         });
-        return outputArr.join("");
+        return outputArr.join('');
       } else {
         console.error(
           "error: An incorrect value has been entered as a color code."
@@ -51,7 +62,7 @@ export default {
       }
     },
     hexConv: function(num) {
-      const hexNum = "0x" + num;
+      const hexNum = '0x' + num;
       const parsed = parseInt(hexNum, 16);
       return parsed;
     },
