@@ -9,7 +9,6 @@
       <li>blue:{{ rgbColor[2] }}</li>
     </ul>
     <p>for CSS</p>
-    <p>{{ removeHashMark("#fff") }}</p>
     <code>rgb({{ rgbColor[0] }},{{ rgbColor[1] }},{{ rgbColor[2] }})</code>
   </div>
 </template>
