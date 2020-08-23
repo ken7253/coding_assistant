@@ -1,7 +1,7 @@
 <template>
   <div class="color-conversion">
     <h2>カラーコード変換</h2>
-    <input v-model="colorCode" type="text" />
+    <input v-model.trim="colorCode" type="text" placeholder="FFFFFF" />
     <input @click="moldNum" type="button" value="変換" />
     <ul>
       <li>red:{{ rgbColor[0] }}</li>
@@ -17,14 +17,14 @@
 export default {
   data: function() {
     return {
-      colorCode: "000000",
+      colorCode: null,
       rgbColor: [0, 0, 0],
     };
   },
   methods: {
     moldNum: function() {
       const removedHash = this.removeHashMark(this.colorCode);
-      const checkedNum = this.checkNumLength(removedHash);
+      const checkedNum = this.checkNumFormat(removedHash);
       const splitArr = checkedNum.match(/.{2}/g);
       const outputArr = [];
       splitArr.forEach((element) => {
@@ -42,9 +42,9 @@ export default {
         return num;
       }
     },
-    checkNumLength: function(num) {
+    checkNumFormat: function(num) {
       const numLength = num.length;
-      if (numLength == 6) {
+      if (numLength == 6 ) {
         return num;
       } else if (numLength == 3) {
         const arr = num.split('');
@@ -54,10 +54,9 @@ export default {
         });
         return outputArr.join('');
       } else {
-        console.error(
-          "error: An incorrect value has been entered as a color code."
+        throw new TypeError(
+          "An incorrect value has been entered as a color code."
         );
-        return "000000";
       }
     },
     hexConv: function(num) {
