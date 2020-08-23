@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .radix-output ul {
   list-style-type: none;
   margin: 0;
