@@ -11,8 +11,8 @@
   top: 0;
   height: 50px;
   width: 100%;
-  background-color: $theme-color;
-  color: $white-color;
+  background-color: $color-theme;
+  color: $color-white;
   h1 {
     text-align: center;
     margin: 0;

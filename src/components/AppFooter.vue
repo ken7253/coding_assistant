@@ -29,8 +29,8 @@ export default {
   z-index: 1000;
   width: 100%;
   text-align: center;
-  background-color: $text-color;
-  color: $white-color;
+  background-color: $color-text;
+  color: $color-white;
   p {
     margin: 0;
     font-size: 0.75rem;

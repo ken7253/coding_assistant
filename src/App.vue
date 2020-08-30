@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./assets/sass/_var.scss";
 #app {
   margin-top: 50px;
