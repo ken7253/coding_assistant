@@ -30,4 +30,7 @@ export default {
 
 <style lang="scss">
 @import "./assets/sass/_var.scss";
+#app {
+  margin-top: 50px;
+}
 </style>
