@@ -7,7 +7,7 @@
       <input v-model.trim="content.jsonValue" type="text" placeholder="Value" />
     </td>
     <td>
-      <input type="button" value="-" />
+      <input @click="removeThis" type="button" value="-" />
     </td>
   </tr>
 </template>
@@ -21,6 +21,11 @@ export default {
         jsonValue: null,
       },
     };
+  },
+  methods: {
+    removeThis: function(){
+      return console.log('remove this element');
+    }
   },
 };
 </script>

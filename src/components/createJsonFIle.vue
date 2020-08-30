@@ -35,6 +35,11 @@ export default {
       valueType: "",
     };
   },
+  methods: {
+    addNewRow: function(){
+      return console.log(this.valueType,"add new row")
+    },
+  },
 };
 </script>
 
