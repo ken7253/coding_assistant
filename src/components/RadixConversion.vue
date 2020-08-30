@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/sass/_var.scss";
 .radix-output ul {
   list-style-type: none;
   margin: 0;
