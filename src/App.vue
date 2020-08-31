@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <AppHeader />
-    <RadixConversion />
-    <ColorConversion />
-    <CreateJsonFile />
-    <AppFooter/>
+    <main>
+      <div class="content-box">
+        <RadixConversion />
+        <ColorConversion />
+      </div>
+    </main>
+    <AppFooter />
   </div>
 </template>
 
@@ -14,7 +17,6 @@ import AppFooter from "./components/AppFooter";
 
 import RadixConversion from "./components/RadixConversion";
 import ColorConversion from "./components/ColorConversion";
-import CreateJsonFile from "./components/CreateJsonFile";
 
 export default {
   name: "app",
@@ -23,14 +25,23 @@ export default {
     AppFooter,
     RadixConversion,
     ColorConversion,
-    CreateJsonFile,
   },
 };
 </script>
 
 <style lang="scss">
 @import "./assets/sass/_var.scss";
-#app {
-  margin-top: 50px;
+main {
+  max-width: 1000px;
+  margin: 50px auto 0;
+  .content-box {
+    padding: 2.5vw;
+    > div {
+      margin: 10px;
+      padding: 10px;
+      border: solid 3px $color-theme;
+      border-radius: 15px;
+    }
+  }
 }
 </style>

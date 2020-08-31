@@ -70,4 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/sass/_var.scss";
+input[type="text"] {
+  margin-right: 5px;
+}
 </style>
