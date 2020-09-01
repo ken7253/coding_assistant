@@ -21,7 +21,8 @@
     </table>
 
     <div>
-      <code>{{ lines }}</code>
+      <code>{{ previewData }}</code>
+      <input @click="createPreview" type="button" value="Preview">
       <input @click="downloadJson" type="button" value="Download" />
     </div>
   </div>
@@ -32,30 +33,39 @@ export default {
   data: function() {
     return {
       lines: { 1: { key: "", value: "" } },
+      previewData: "",
       valueType: "",
     };
   },
   methods: {
+    getLinesLength: function(offset = 0) {
+      const linesLength = Object.keys(this.lines).length;
+      return linesLength + offset;
+    },
     addNewRow: function() {
-      const nextObjectLength = Object.keys(this.lines).length + 1;
-      const nextKey = nextObjectLength;
+      const nextKey = this.getLinesLength(1);
       return this.$set(this.lines, nextKey, { key: "", value: "" });
     },
     removeRow: function() {
-      const linesLastNum = Object.keys(this.lines).length;
-      if (linesLastNum <= 1) {
+      if (this.getLinesLength() <= 1) {
         return void 0;
       } else {
-        return this.$delete(this.lines, linesLastNum);
+        return this.$delete(this.lines, this.getLinesLength());
       }
     },
     downloadJson: function() {
-      return console.log("Download");
+      this.createPreview();
+      // ダウンロード処理
+      return console.log(this.previewData);
     },
-    convertToJson: function() {
-      const original = this.lines;
-      // 元データをJSONに変換
-      return console.log(original);
+    createPreview: function() {
+      const json = new Object;
+      for (let index in this.lines) {
+        const key = this.lines[index].key;
+        const value = this.lines[index].value;
+        json[key] = value;
+      }
+      return this.previewData = json;
     },
   },
 };
