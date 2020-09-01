@@ -1,19 +1,6 @@
 <template>
   <div class="create-json-flie">
     <h2>JSON生成</h2>
-    <table>
-      <tr>
-        <td>KEY</td>
-        <td>VALUE</td>
-        <td></td>
-      </tr>
-      <tr v-for="line in lines" :key="line">
-        <td><input v-model="line.key" type="text" /></td>
-        <td><input v-model="line.value" type="text" /></td>
-        <td></td>
-      </tr>
-    </table>
-
     <div>
       <select v-model="valueType">
         <option disabled value>select type</option>
@@ -24,6 +11,19 @@
       <input @click="addNewRow" type="button" value="+" />
       <input @click="removeRow" type="button" value="-" />
     </div>
+    <table>
+      <tr>
+        <td>KEY</td>
+        <td>VALUE</td>
+        <td></td>
+      </tr>
+      <tr v-for="(line, index) in lines" v-bind:key="index">
+        <td><input v-model="line.key" type="text" /></td>
+        <td><input v-model="line.value" type="text" /></td>
+        <td></td>
+      </tr>
+    </table>
+
     <div>
       <p>{{ lines }}</p>
       <input @click="downloadJson" type="button" value="Download" />
