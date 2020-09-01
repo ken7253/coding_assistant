@@ -12,20 +12,15 @@
       <input @click="removeRow" type="button" value="-" />
     </div>
     <table>
-      <tr>
-        <td>KEY</td>
-        <td>VALUE</td>
-        <td></td>
-      </tr>
       <tr v-for="(line, index) in lines" v-bind:key="index">
-        <td><input v-model="line.key" type="text" /></td>
-        <td><input v-model="line.value" type="text" /></td>
+        <td><input v-model="line.key" type="text" placeholder="KEY" /></td>
+        <td><input v-model="line.value" type="text" placeholder="VALUE" /></td>
         <td></td>
       </tr>
     </table>
 
     <div>
-      <p>{{ lines }}</p>
+      <code>{{ lines }}</code>
       <input @click="downloadJson" type="button" value="Download" />
     </div>
   </div>

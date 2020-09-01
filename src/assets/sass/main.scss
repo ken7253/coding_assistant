@@ -27,3 +27,11 @@ input[type="button"] {
     color: $color-white;
     font-weight: 900;
 }
+code {
+    background-color: $color-altDark;
+    color: $color-white;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+}
