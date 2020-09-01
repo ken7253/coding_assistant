@@ -13,6 +13,7 @@
     </div>
     <table>
       <tr v-for="(line, index) in lines" v-bind:key="index">
+        <th>{{ index }}</th>
         <td><input v-model="line.key" type="text" placeholder="KEY" /></td>
         <td><input v-model="line.value" type="text" placeholder="VALUE" /></td>
         <td></td>
@@ -30,22 +31,33 @@
 export default {
   data: function() {
     return {
-      lines: {},
+      lines: { 1: { key: "", value: "" } },
       valueType: "",
     };
   },
   methods: {
     addNewRow: function() {
       const nextObjectLength = Object.keys(this.lines).length + 1;
-      const nextKey = "line" + nextObjectLength;
+      const nextKey = nextObjectLength;
       this.$set(this.lines, nextKey, { key: "", value: "" });
       return console.log(this.lines, nextKey);
     },
     removeRow: function() {
-      return console.log("Delete Line:");
+      const linesLastNum = Object.keys(this.lines).length;
+      if (linesLastNum <= 1) {
+        return void 0;
+      } else {
+        this.$delete(this.lines, linesLastNum);
+        return console.log("Delete Line:", linesLastNum);
+      }
     },
     downloadJson: function() {
       return console.log("Download");
+    },
+    convertToJson: function() {
+      const original = this.lines;
+      // 元データをJSONに変換
+      return console.log(original);
     },
   },
 };
