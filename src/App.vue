@@ -5,6 +5,7 @@
       <div class="content-box">
         <RadixConversion />
         <ColorConversion />
+        <CreateJsonFile />
       </div>
     </main>
     <AppFooter />
@@ -17,6 +18,7 @@ import AppFooter from "./components/AppFooter";
 
 import RadixConversion from "./components/RadixConversion";
 import ColorConversion from "./components/ColorConversion";
+import CreateJsonFile from "./components/CreateJsonFile";
 
 export default {
   name: "app",
@@ -25,6 +27,7 @@ export default {
     AppFooter,
     RadixConversion,
     ColorConversion,
+    CreateJsonFile,
   },
 };
 </script>
