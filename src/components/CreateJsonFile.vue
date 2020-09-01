@@ -39,16 +39,14 @@ export default {
     addNewRow: function() {
       const nextObjectLength = Object.keys(this.lines).length + 1;
       const nextKey = nextObjectLength;
-      this.$set(this.lines, nextKey, { key: "", value: "" });
-      return console.log(this.lines, nextKey);
+      return this.$set(this.lines, nextKey, { key: "", value: "" });
     },
     removeRow: function() {
       const linesLastNum = Object.keys(this.lines).length;
       if (linesLastNum <= 1) {
         return void 0;
       } else {
-        this.$delete(this.lines, linesLastNum);
-        return console.log("Delete Line:", linesLastNum);
+        return this.$delete(this.lines, linesLastNum);
       }
     },
     downloadJson: function() {
