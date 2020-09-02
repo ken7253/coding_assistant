@@ -29,6 +29,11 @@
       <input @click="createPreview" type="button" value="Preview" />
       <input @click="downloadJson" type="button" value="Download" />
     </div>
+    <div>
+      <h3>オプション</h3>
+      <p>BOM:<input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</p>
+      <p>filename: <input v-model="flieName" type="text" /></p>
+    </div>
   </div>
 </template>
 
@@ -39,6 +44,8 @@ export default {
       lines: { 1: { key: "", value: "" } },
       previewData: "",
       valueType: "",
+      jsonBOM: false,
+      flieName: "result",
     };
   },
   methods: {
@@ -59,19 +66,28 @@ export default {
     },
     downloadJson: function() {
       this.createPreview();
-      // ダウンロード処理
       const data = this.previewData;
-      console.log(this.previewData);
-      const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
-      const blob = new Blob([bom, data], { type: "text/json" });
-      const url = (window.URL || window.webkitURL).createObjectURL(blob);
+      const url = (window.URL || window.webkitURL).createObjectURL(
+        this.checkBom(data)
+      );
       const link = document.createElement("a");
-      link.download = "result.json";
+      link.download = this.flieName + ".json";
       link.href = url;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       return console.log(this.previewData);
+    },
+    checkBom: function(data) {
+      // BOMの有無を判定
+      if (this.jsonBOM) {
+        const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
+        const blob = new Blob([bom, data], { type: "application/json" });
+        return blob;
+      } else {
+        const blob = new Blob([data], { type: "application/json" });
+        return blob;
+      }
     },
     createPreview: function() {
       // JSONに整形
@@ -89,7 +105,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/sass/_var.scss";
-input,select {
+input,
+select {
   margin-right: 1rem;
 }
 input[type="text"] {
