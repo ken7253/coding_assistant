@@ -1,4 +1,5 @@
 # coding_assistant
+vue SFC Practice app.
 
 ## Project setup
 ```
