@@ -1,13 +1,13 @@
 <template>
   <div class="create-json-flie">
     <h2>JSON生成</h2>
-    <div>
-      <select v-model="valueType">
+    <div class="table-control">
+      <!--<select v-model="valueType">
         <option disabled value>select type</option>
         <option>text</option>
         <option>number</option>
         <option>object</option>
-      </select>
+      </select>-->
       <input @click="addNewRow" type="button" value="+" />
       <input @click="removeRow" type="button" value="-" />
     </div>
@@ -29,10 +29,12 @@
       <input @click="createPreview" type="button" value="Preview" />
       <input @click="downloadJson" type="button" value="Download" />
     </div>
-    <div>
+    <div class="data-options">
       <h3>オプション</h3>
-      <p>BOM:<input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</p>
-      <p>filename: <input v-model="flieName" type="text" /></p>
+      <ul>
+        <li>BOM: <label><input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</label></li>
+        <li>filename: <input v-model="flieName" type="text" /></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -41,7 +43,7 @@
 export default {
   data: function() {
     return {
-      lines: { 0: { key: "", value: "" } },
+      lines: { 1: { key: "", value: "" } },
       previewData: "",
       valueType: "",
       jsonBOM: false,
@@ -112,6 +114,14 @@ select {
 input[type="text"] {
   margin-right: 1rem;
 }
+.table-control {
+  input[type="button"] {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.25rem;
+  }
+}
 .json-data-input {
   @include sp {
     width: 100%;
@@ -124,6 +134,19 @@ input[type="text"] {
       input {
         width: 100%;
       }
+    }
+  }
+}
+.data-options{
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  label {
+    cursor: pointer;
+    margin: 0;
+    input {
+      margin: 0;
     }
   }
 }
