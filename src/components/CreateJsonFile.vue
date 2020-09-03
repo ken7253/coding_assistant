@@ -11,7 +11,7 @@
       <input @click="addNewRow" type="button" value="+" />
       <input @click="removeRow" type="button" value="-" />
     </div>
-    <table>
+    <table class="json-data-input">
       <tr>
         <td></td>
         <td>KEY</td>
@@ -41,7 +41,7 @@
 export default {
   data: function() {
     return {
-      lines: { 1: { key: "", value: "" } },
+      lines: { 0: { key: "", value: "" } },
       previewData: "",
       valueType: "",
       jsonBOM: false,
@@ -111,5 +111,20 @@ select {
 }
 input[type="text"] {
   margin-right: 1rem;
+}
+.json-data-input {
+  @include sp {
+    width: 100%;
+    th {
+      width: 20px;
+    }
+    td {
+      display: block;
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
 }
 </style>
