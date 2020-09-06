@@ -6,7 +6,7 @@
     <div class="link-pages">
       <ul class="flex-wrp-ard">
         <li v-for="(siteData, index) in siteDatas" :key="index">
-          <a :href="siteData[0]" :taget="isBlank(siteData[2])" rel="noopener">{{
+          <a :href="siteData[0]" :target="isBlank(siteData[2])" rel="noopener">{{
             siteData[1]
           }}</a>
         </li>
