@@ -1,7 +1,7 @@
 # coding_assistant
 VueCLI SFC practice app.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8739d799-d12a-4694-96c2-3fb05e1fef8f/deploy-status)](https://app.netlify.com/sites/confident-swartz-5e33f9/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8739d799-d12a-4694-96c2-3fb05e1fef8f/deploy-status)](https://app.netlify.com/sites/coding-assistant/deploys)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ken7253/coding_assistant)
 
 ## 概要
