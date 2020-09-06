@@ -5,7 +5,7 @@
 @import "var";
 @import "setup";
 
-// global style
+// global style (only HTML5 element)
 
 h2 {
   border-left: solid 7px $color-theme;
@@ -41,4 +41,10 @@ code {
   width: 100%;
   padding: 1rem;
   margin: 1rem 0;
+}
+a {
+  &:hover {
+    text-decoration: none;
+    opacity: .9;
+  }
 }
