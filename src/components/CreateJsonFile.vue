@@ -32,7 +32,12 @@
     <div class="data-options">
       <h3>オプション</h3>
       <ul>
-        <li>BOM: <label><input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</label></li>
+        <li>
+          BOM:
+          <label
+            ><input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</label
+          >
+        </li>
         <li>filename: <input v-model="flieName" type="text" /></li>
       </ul>
     </div>
@@ -99,7 +104,7 @@ export default {
         const value = this.lines[index].value;
         json[key] = value;
       }
-      return (this.previewData = JSON.stringify(json));
+      return (this.previewData = JSON.stringify(json, null, 4));
     },
   },
 };
@@ -137,7 +142,7 @@ input[type="text"] {
     }
   }
 }
-.data-options{
+.data-options {
   ul {
     list-style-type: none;
     padding: 0;
