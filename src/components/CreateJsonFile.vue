@@ -2,12 +2,12 @@
   <div class="create-json-flie">
     <h2>JSON生成</h2>
     <div class="table-control">
-      <!--<select v-model="valueType">
+      <select v-model="valueType">
         <option disabled value>select type</option>
         <option>text</option>
         <option>number</option>
-        <option>object</option>
-      </select>-->
+        <option>boolean</option>
+      </select>
       <input @click="addNewRow" type="button" value="+" />
       <input @click="removeRow" type="button" value="-" />
     </div>
@@ -20,7 +20,15 @@
       <tr v-for="(line, index) in lines" v-bind:key="index">
         <th>{{ index }}</th>
         <td><input v-model="line.key" type="text" placeholder="KEY" /></td>
-        <td><input v-model="line.value" type="text" placeholder="VALUE" /></td>
+        <td>
+          <label v-if="line.valueType === 'boolean'">
+            <input type="checkbox" v-model="line.value" />{{
+              line.value
+            }}</label
+          >
+          <input v-else v-model="line.value" type="text" placeholder="VALUE" />
+        </td>
+        <td>{{ line.valueType }}</td>
       </tr>
     </table>
 
@@ -32,7 +40,12 @@
     <div class="data-options">
       <h3>オプション</h3>
       <ul>
-        <li>BOM: <label><input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</label></li>
+        <li>
+          BOM:
+          <label
+            ><input v-model="jsonBOM" type="checkbox" /> {{ jsonBOM }}</label
+          >
+        </li>
         <li>filename: <input v-model="flieName" type="text" /></li>
       </ul>
     </div>
@@ -43,9 +56,8 @@
 export default {
   data: function() {
     return {
-      lines: { 1: { key: "", value: "" } },
+      lines: { 1: { key: "", value: "", valueType: "text" } },
       previewData: "",
-      valueType: "",
       jsonBOM: false,
       flieName: "result",
     };
@@ -57,10 +69,15 @@ export default {
     },
     addNewRow: function() {
       const nextKey = this.getLinesLength(1);
-      return this.$set(this.lines, nextKey, { key: "", value: "" });
+      const type = this.valueType;
+      return this.$set(this.lines, nextKey, {
+        key: "",
+        value: "",
+        valueType: type,
+      });
     },
     removeRow: function() {
-      if (this.getLinesLength() <= 1) {
+      if (this.getLinesLength() <= 0) {
         return void 0;
       } else {
         return this.$delete(this.lines, this.getLinesLength());
@@ -137,7 +154,7 @@ input[type="text"] {
     }
   }
 }
-.data-options{
+.data-options {
   ul {
     list-style-type: none;
     padding: 0;
