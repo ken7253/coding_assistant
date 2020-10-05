@@ -116,7 +116,7 @@ export default {
         const value = this.lines[index].value;
         json[key] = value;
       }
-      return (this.previewData = JSON.stringify(json));
+      return (this.previewData = JSON.stringify(json, null, 4));
     },
   },
 };
