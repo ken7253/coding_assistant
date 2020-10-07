@@ -60,6 +60,7 @@ export default {
       previewData: "",
       jsonBOM: false,
       flieName: "result",
+      valueType: "",
     };
   },
   methods: {
