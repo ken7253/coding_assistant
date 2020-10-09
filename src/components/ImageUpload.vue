@@ -2,18 +2,12 @@
   <div>
     <form>
       <label for="imgInput"></label>
-      <input id="imgInput" name="imageData" type="file" @change="onChangeImg" />
+      <input id="imgInput" name="imageData" type="file" accept="image/*" @change="onChangeImg" />
     </form>
     <hr />
     <div class="img-display-area">
-      <input type="button" value="[x]" @click="removeImgData" />
-      <div>
-        <img
-        v-show="uploadedImage"
-        class="preview-item-file"
-        :src="uploadedImage"
-        alt=""
-      /></div>
+      <!-- <input type="button" value="[x]" @click="removeImgData" /> -->
+      <img :src="imgDataURL"/>
     </div>
   </div>
 </template>
@@ -22,13 +16,18 @@
 export default {
   data: function() {
     return {
-      imgFileName: "",
+      imgDataURL : "",
     };
   },
   methods: {
     onChangeImg(e) {
-      const files = e.target.files || e.dataTransfer.files;
-      this.displayImg(files[0]);
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = event => {
+        const result = event.target.result;
+        console.log(result);
+      }
+      reader.readAsDataURL(file);
     },
   }
 };
