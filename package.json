@@ -4,6 +4,7 @@
   "private": true,
   "description": "vue-cli practice app",
   "author": "ken7253",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
