@@ -1,6 +1,6 @@
 <template>
   <div class="app-header">
-    <h1>Codeing Assistant</h1>
+    <h1>Coding Assistant</h1>
   </div>
 </template>
 

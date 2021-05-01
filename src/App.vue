@@ -6,6 +6,7 @@
         <RadixConversion />
         <ColorConversion />
         <CreateJsonFile />
+        <ColorAdvice />
       </div>
     </main>
     <AppFooter />
@@ -19,6 +20,7 @@ import AppFooter from "./components/AppFooter";
 import RadixConversion from "./components/RadixConversion";
 import ColorConversion from "./components/ColorConversion";
 import CreateJsonFile from "./components/CreateJsonFile";
+import ColorAdvice from "./components/ColorAdvice";
 
 export default {
   name: "app",
@@ -28,6 +30,7 @@ export default {
     RadixConversion,
     ColorConversion,
     CreateJsonFile,
+    ColorAdvice,
   },
 };
 </script>
